@@ -19,9 +19,9 @@ export default function App() {
       <main>
         <Hero lang={lang} onApply={() => setClosedOpen(true)} />
         <AboutSection lang={lang} />
+        <GallerySection lang={lang} />
         <HowItWorksSection lang={lang} />
         <RulesSection lang={lang} />
-        <GallerySection lang={lang} />
       </main>
       <Footer lang={lang} />
       <ClosedGroupNotice
