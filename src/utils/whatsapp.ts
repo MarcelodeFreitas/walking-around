@@ -14,7 +14,7 @@ export interface ApplicationFormData {
   rulesAccepted: boolean
 }
 
-const ADMIN_PHONE = '351939910283'
+const ADMIN_PHONE = ''
 
 const ROLE_LABELS: Record<Lang, Record<ApplicationFormData['role'], string>> = {
   pt: { rider: 'Motociclista', passenger: 'Pendura', supporter: 'Apoiante' },
