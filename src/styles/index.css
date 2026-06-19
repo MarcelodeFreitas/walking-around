@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-[#0A0A0A] text-ink font-body antialiased;
+    margin: 0;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #9b7a18;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c9a020;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .btn-gold {
+    @apply relative overflow-hidden inline-flex items-center justify-center
+      px-10 py-4 rounded-full
+      font-display tracking-widest text-lg
+      bg-gold text-black
+      transition-all duration-300 ease-out
+      hover:bg-gold-light
+      hover:shadow-[0_0_40px_rgba(201,160,32,0.45)]
+      active:scale-95
+      cursor-pointer
+      select-none;
+  }
+
+  .btn-gold::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent 60%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+  }
+
+  .btn-gold:hover::before {
+    transform: translateX(100%);
+  }
+
+  .card-premium {
+    @apply bg-surface rounded-2xl border border-gray-800 p-6
+      hover:border-gold/30 transition-colors duration-300;
+  }
+
+  .gold-divider {
+    @apply h-px my-10;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(201, 160, 32, 0.5),
+      transparent
+    );
+  }
+
+  .carbon-bg {
+    background-color: #0a0a0a;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='2' height='2' fill='rgba(255,255,255,0.025)'/%3E%3Crect x='2' y='2' width='2' height='2' fill='rgba(255,255,255,0.025)'/%3E%3C/svg%3E");
+  }
+
+  .section-container {
+    @apply max-w-5xl mx-auto px-6;
+  }
+
+  .section-title {
+    @apply font-display tracking-wider text-ink;
+  }
+}
