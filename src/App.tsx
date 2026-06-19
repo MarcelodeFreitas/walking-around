@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import { detectLanguage, persistLanguage } from './utils/language'
-import type { Lang } from './data/translations'
 import { Hero } from './components/Hero'
 import { AboutSection } from './components/AboutSection'
 import { HowItWorksSection } from './components/HowItWorksSection'
@@ -10,18 +8,11 @@ import { ApplyModal } from './components/ApplyModal'
 import { ClosedGroupNotice } from './components/ClosedGroupNotice'
 import { Footer } from './components/Footer'
 
+const lang = 'pt' as const
+
 export default function App() {
-  const [lang, setLang] = useState<Lang>(detectLanguage)
   const [closedOpen, setClosedOpen] = useState(false)
-  // Keep applyOpen wired for future reactivation — swap onApply below to open this instead
   const [applyOpen, setApplyOpen] = useState(false)
-
-  function handleLangToggle(newLang: Lang) {
-    setLang(newLang)
-    persistLanguage(newLang)
-  }
-
-  void handleLangToggle // suppress unused warning until toggle is re-enabled
 
   return (
     <>
