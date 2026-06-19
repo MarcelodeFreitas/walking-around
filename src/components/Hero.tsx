@@ -90,25 +90,38 @@ export function Hero({ lang, onApply }: Props) {
       </motion.div>
 
       {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
+      <motion.button
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10 cursor-pointer group"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.8, duration: 0.6 }}
-        aria-hidden="true"
+        transition={{ delay: 1.8, duration: 0.8 }}
+        aria-label="Scroll para baixo"
+        onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
       >
-        <motion.div
-          className="w-px h-10"
-          style={{
-            background: 'linear-gradient(to bottom, rgba(201,160,32,0.6), transparent)',
-          }}
-          animate={prefersReduced ? {} : { scaleY: [1, 0.4, 1] }}
-          transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
-        />
-        <span className="text-ink-subtle text-[10px] tracking-[0.25em] font-display">
+        <span className="font-display tracking-[0.3em] text-xs text-gold/70 group-hover:text-gold transition-colors duration-300">
           SCROLL
         </span>
-      </motion.div>
+        <div className="relative flex flex-col items-center">
+          <motion.svg
+            className="w-6 h-6 text-gold/50 group-hover:text-gold/80 transition-colors duration-300"
+            fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"
+            aria-hidden="true"
+            animate={prefersReduced ? {} : { y: [0, 6, 0], opacity: [0.5, 1, 0.5] }}
+            transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" />
+          </motion.svg>
+          <motion.svg
+            className="w-6 h-6 text-gold/25 group-hover:text-gold/50 transition-colors duration-300 -mt-3"
+            fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"
+            aria-hidden="true"
+            animate={prefersReduced ? {} : { y: [0, 6, 0], opacity: [0.2, 0.6, 0.2] }}
+            transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut', delay: 0.25 }}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" />
+          </motion.svg>
+        </div>
+      </motion.button>
     </section>
   )
 }
